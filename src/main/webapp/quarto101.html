@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <title>Lista de Pacientes - Quadro de Monitoramento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3cacb7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .header-center-top {
+        width: 100%;
+        max-width: 1200px;
+        background-color: #032023;
+        padding: 10px 20px;
+        color:#3cacb7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .header-center-top h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #d0f0ff;
+    }
+    
+.header-center-top img {
+    width: 80px; /* Ajuste o tamanho para algo pequeno e proporcional */
+    height: auto; /* Mantém a proporção */
+    max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+    border-radius: 50%;
+    background-color: #032023;
+    object-fit: contain; /* Garante que a imagem se ajuste ao contêiner */
+}
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            background-color: #7ec7c9;
+            border-radius: 1px 1px 15px 15px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .monitoring-board {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color:#e0f7ff;
+            padding: 10px;
+            border-radius: 10px;
+            width: 1180px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-pacientes {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .header-pacientes h2 {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            flex-grow: 1;
+            margin: 0;
+        }
+
+        .header-pacientes button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .header-pacientes button img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table tr {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .data-table th, .data-table td {
+            padding: 15px;
+            text-align: left;
+            font-size: 18px;
+        }
+
+        .data-table th {
+            background-color:#032023;
+            color: white;
+        }
+
+        .data-table td {
+            color: black;
+        }
+
+        .patient-name {
+            font-weight: bold;
+            color:#032023;
+        }
+
+        .patient-name a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topo da página -->
+    <div class="header-center-top">
+        <h1>LISTA DE PACIENTES</h1>
+        <img src="logo2.png" alt="Logotipo"/>
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        <div class="monitoring-board">
+            <div class="header-pacientes">
+                <button onclick="window.location='quartos.html';">
+                    <img src="VOLTAR.png" alt="Botão Voltar"/>
+                </button>
+                <h2>Pacientes</h2>
+            </div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Nome do Paciente</th>
+                       
+                        <th>BPM</th>
+                        <th>SpO₂</th>
+                        <th>RR</th>
+                        <th>ºC</th>
+                        <th>MG/DL</th>
+                        <th>LEITO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="patient-name"><a href="monitoramento.html">Mércio da Silva Lemos</a></td>
+                        
+                        <td id="bpmValor">0</td>
+                        <td>98%</td>
+                        <td>18</td>
+                        <td>36.7</td>
+                        <td>89</td>
+                        <td>A-1</td>
+                    </tr>
+                   <tr>
+                        <td class="patient-name">Carlos Souza</td>
+                        
+                        <td>72</td>
+                        <td>96%</td>
+                        <td>20</td>
+                        <td>37.2</td>
+                        <td>96</td>
+                         <td>A-2</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-name">Beatriz Oliveira</td>
+                        
+                        <td>85</td>
+                        <td>99%</td>
+                        <td>16</td>
+                        <td>36.5</td>
+                        <td>94</td>
+                         <td>A-3</td>
+                    </tr>
+                    <tr>
+                        <td class="patient-name">Daniel Costa</td>
+                       
+                        <td>90</td>
+                        <td>95%</td>
+                        <td>19</td>
+                        <td>37.1</td>
+                        <td>98</td>
+                         <td>A-4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function atualizarBPM() {
+            fetch('batimento')
+                .then(response => response.text())
+                .then(data => {
+                    if (data === "alerta") {
+                        mostrarAlertaCritico();
+                    } else {
+                        document.getElementById('bpmValor').textContent = data;
+                        removerAlertaCritico();
+                    }
+                })
+                .catch(error => console.error('Erro ao obter o BPM:', error));
+        }
+
+        setInterval(atualizarBPM, 100);
+    </script>
+</body>
+</html>

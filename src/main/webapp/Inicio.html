@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página com Logo e Animação de Estrelas</title>
+<style>
+body {
+	background-color: #032023;
+	color: white;
+	margin: 0;
+	font-family: Arial, sans-serif;
+	overflow: hidden;
+	height: 100vh;
+	position: relative;
+}
+
+/* Estilo do canvas para a animação */
+.particular {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+/* Estilo do logotipo e conteúdo */
+.logo-container {
+	text-align: center;
+	position: absolute;
+	z-index: 10;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.logo-container p strong {
+	text-align: center;
+	color: #3cacb7;
+	font-size: 25px;
+}
+
+.logo-container img {
+	width: 250px; /* Ajuste conforme necessário */
+	height: auto;
+}
+
+.menu {
+	margin-top: 20px;
+}
+
+.menu a {
+	color: #3cacb7;
+	margin: 0 10px;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+.menu a:hover {
+	color: #299CAD; /* Cor de destaque ao passar o mouse */
+}
+</style>
+</head>
+<body>
+
+	<!-- Canvas para a animação de estrelas -->
+	<canvas class="particular"></canvas>
+
+	<!-- Conteúdo do logotipo e menu -->
+	<div class="logo-container">
+		<img src="logo2.png" alt="Logotipo" />
+		<p>
+			<strong>HEALTH+</strong>
+		</p>
+		<div class="menu">
+			<a href="login.html">LOGIN</a>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+    (function($, window) {
+        function Constellation(canvas, options) {
+            var $canvas = $(canvas),
+                context = canvas.getContext('2d'),
+                defaults = {
+                    star: {
+                        color: 'rgba(255, 255, 255, .5)',
+                        width: 1
+                    },
+                    line: {
+                        color: 'rgba(255, 255, 255, .5)',
+                        width: 0.2
+                    },
+                    position: {
+                        x: canvas.width * 0.02,
+                        y: canvas.height * 0.02
+                    },
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                    velocity: 0.02,  // Reduz a velocidade para suavidade
+                    length: 80,
+                    distance: 150,  // Reduz a distância para conexão de linhas
+                    radius: 5000,
+                    stars: []
+                },
+                config = $.extend(true, {}, defaults, options);
+
+            function Star() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = config.velocity - (Math.random() * 0.027);
+                this.vy = config.velocity - (Math.random() * 0.027);
+                this.radius = Math.random() * config.star.width;
+            }
+
+            Star.prototype = {
+                create: function() {
+                    context.beginPath();
+                    context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                    context.fill();
+                },
+                animate: function() {
+                    for (let i = 0; i < config.length; i++) {
+                        let star = config.stars[i];
+                        if (star.y < 0 || star.y > canvas.height) star.vy = -star.vy;
+                        if (star.x < 0 || star.x > canvas.width) star.vx = -star.vx;
+                        star.x += star.vx;
+                        star.y += star.vy;
+                    }
+                }
+            };
+
+            this.createStars = function() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < config.length; i++) {
+                    let star = config.stars[i] || new Star();
+                    config.stars[i] = star;
+                    star.create();
+                }
+                this.drawLines();
+                this.animateStars();
+            };
+
+            this.drawLines = function() {
+                for (let i = 0; i < config.length; i++) {
+                    for (let j = i + 1; j < config.length; j++) {
+                        let iStar = config.stars[i];
+                        let jStar = config.stars[j];
+                        if (Math.abs(iStar.x - jStar.x) < config.distance && Math.abs(iStar.y - jStar.y) < config.distance) {
+                            if (Math.abs(iStar.x - config.position.x) < config.radius &&
+                                Math.abs(iStar.y - config.position.y) < config.radius) {
+                                context.beginPath();
+                                context.moveTo(iStar.x, iStar.y);
+                                context.lineTo(jStar.x, jStar.y);
+                                context.stroke();
+                                context.closePath();
+                            }
+                        }
+                    }
+                }
+            };
+
+            this.animateStars = function() {
+                config.stars.forEach(star => star.animate());
+            };
+
+            this.setCanvas = function() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            };
+
+            this.setContext = function() {
+                context.fillStyle = config.star.color;
+                context.strokeStyle = config.line.color;
+                context.lineWidth = config.line.width;
+            };
+
+            this.loop = function(callback) {
+                callback();
+                requestAnimationFrame(() => this.loop(callback));
+            };
+
+            this.bind = function() {
+                $(window).on('mousemove', function(e) {
+                    config.position.x = e.pageX - $canvas.offset().left;
+                    config.position.y = e.pageY - $canvas.offset().top;
+                });
+            };
+
+            this.init = function() {
+                this.setCanvas();
+                this.setContext();
+                this.loop(this.createStars.bind(this));
+                this.bind();
+            };
+        }
+
+        $.fn.constellation = function(options) {
+            return this.each(function() {
+                var c = new Constellation(this, options);
+                c.init();
+            });
+        };
+
+    })($, window);
+
+    // Inicializar a animação de constelação
+    $(document).ready(function() {
+        $(".particular").constellation({
+            star: {
+                width: 1
+            },
+            line: {
+                color: "rgba(255, 255, 255, .5)"
+            },
+            radius: 300
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RELATÓRIO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3cacb7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+       .header-center-top {
+        width: 100%;
+        max-width: 1200px;
+        background-color: #032023;
+        padding: 10px 20px;
+        color:#3cacb7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .header-center-top h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #d0f0ff;
+    }
+    
+.header-center-top img {
+    width: 80px; /* Ajuste o tamanho para algo pequeno e proporcional */
+    height: auto; /* Mantém a proporção */
+    max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+    border-radius: 50%;
+    background-color: #032023;
+    object-fit: contain; /* Garante que a imagem se ajuste ao contêiner */
+}
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            max-height: 1200px;
+            background-color:#7ec7c9;
+            border-radius: 1px 1px 15px 15px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .header .info {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 60%;
+            margin-right: 20px;
+        }
+
+        .header .info .text-info {
+            font-size: 14px;
+        }
+
+        .header .icons button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .header .icons button img {
+            width: 40px;
+            height: 40px;
+        }
+ 
+        .monitoring-board {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #e0f7ff;
+            padding: 25px;
+            border-radius: 10px;
+            width: 1150px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .monitoring-board h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .monitoring-board .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        /* Adiciona borda às células da tabela */
+        .monitoring-board .data-table td {
+            border: 3px solid #032023;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+            font-size: 15px;
+        }
+
+        /* Estilo para títulos dentro da tabela */
+        .monitoring-board .data-table td strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-center-top">
+        <h1>HEALTH +</h1>
+        <img src="logo2.png" alt="Imagem do Logotipo"/>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="info">
+                <img src="perfil.png" alt="Foto do Paciente"/>
+                <div class="text-info">
+                    <strong>NOME:</strong> Mércio da Silva Lemos<br>
+                    <strong>CPF:</strong> 000.000.000-00<br>
+                </div>
+            </div>
+            <div class="icons">
+                <button onclick="window.location='monitoramento.html';">
+                    <img src="VOLTAR.png" alt="Botão Voltar"/>
+                </button>
+            </div>
+        </div>
+
+        <div class="monitoring-board">
+            <h2>RELATÓRIO</h2>
+            <table class="data-table">
+                <tr>
+                    <td><strong>IDADE DO PACIENTE:</strong> 68 ANOS</td>
+                </tr>
+                <tr>
+                    <td><strong>LEITO:</strong> A-1</td>
+                   
+                </tr>
+                <tr>
+                    <td><strong>DATA DE NASCIMENTO:</strong> 22/01/1956</td>
+                   
+                </tr>
+                <tr>
+                    <td><strong>DIAGNÓSTICO:</strong> DIABETES MELLITUS TIPO 2 (DIAGNÓSTICO HÁ 8 ANOS)</td>
+                </tr>
+                <tr>
+                 <td><strong>CID:</strong> CID-10/E11</td>
+                 </tr>
+                 <tr>
+                 <td><strong>MEDICAMENTOS:</strong>METFORMINA 850MG (2X DIA) / INSULINA  BASAL DE LONGA DURAÇÃO (NOITE)</td>
+                 </tr>
+                <tr>
+                    <td><strong>CUIDADOS:</strong> ALÉRGICO A METAMIZOL</td>
+                </tr>
+                <tr>
+                    <td><strong>HISTÓRICO MÉDICO:</strong> MÉRCIO É PORTADOR DE DIABETES TIPO 2, DIAGNOSTICADO AOS 60 ANOS. NA ÉPOCA DO DIAGNÓSTICO, ELE APRESENTAVA SINTOMAS CLÁSSICOS COMO SEDE EXCESSIVA, AUMENTO DA FREQUÊNCIA URINÁRIA E CANSAÇO. ALÉM DISSO, TINHA HISTÓRICO FAMILIAR DE DIABETES.</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>PROGNÓSTICO:</strong>COM O CONTROLE ADEQUADO DA GLICEMIA E A ADESÃO ÀS MUDANÇAS NO ESTILO DE VIDA, MÉRCIO TEM BOAS CHANCES DE EVITAR COMPLICAÇÕES MAIS GRAVES, COMO DOENÇAS CARDIOVASCULARES E INSUFICIÊNCIA RENAL. CONTUDO, SE ELE NÃO CONSEGUIR MELHORAR SUA ADERÊNCIA AO TRATAMENTO, O RISCO DE COMPLICAÇÕES A LONGO PRAZO, COMO RETINOPATIA E AMPUTAÇÕES, AUMENTA CONSIDERAVELMENTE. </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

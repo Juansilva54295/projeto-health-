@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadro de Quartos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3cacb7 ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+ .header-center-top {
+        width: 100%;
+        max-width: 1200px;
+        background-color: #032023;
+        padding: 10px 20px;
+        color:#3cacb7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .header-center-top h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #d0f0ff;
+    }
+    
+.header-center-top img {
+    width: 80px; /* Ajuste o tamanho para algo pequeno e proporcional */
+    height: auto; /* Mantém a proporção */
+    max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+    border-radius: 50%;
+    background-color: #032023;
+    object-fit: contain; /* Garante que a imagem se ajuste ao contêiner */
+}
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            background-color:#7ec7c9;
+            border-radius: 1px 1px 15px 15px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .rooms-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Largura mínima de cada cartão */
+            gap: 20px;
+        }
+
+        .room-card {
+            background-color:#e0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top:20px;
+        }
+        
+        .room-card1 {
+            background-color: #e0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top:20px;
+        }
+            .room-card {
+            background-color: #e0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top:20px;
+        }
+            .room-card1 {
+            background-color: #e0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top:55px;
+        }
+
+        .room-card h3 {
+            margin: 0;
+            font-size: 20px;
+            color:#032023;
+        }
+         .room-card1 h3 {
+            margin: 0;
+            font-size: 20px;
+            color:#032023;
+        }
+        
+
+        .room-card p {
+            font-size: 18px;
+            color: #333;
+        }
+             .room-card1 p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .room-card a {
+            text-decoration: none; /* Remove o sublinhado do link */
+            color: inherit; /* Herda as cores do elemento */
+        }
+        .room-card1 a {
+            text-decoration: none; /* Remove o sublinhado do link */
+            color: inherit; /* Herda as cores do elemento */
+        }
+          .room-card1 a {
+            text-decoration: none; /* Remove o sublinhado do link */
+            color: inherit; /* Herda as cores do elemento */
+        }
+
+        /* Estilo para o botão de voltar */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-button img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topo da página -->
+    <div class="header-center-top">
+        <h1>QUARTOS DA UTI</h1>
+        <img src="logo2.png" alt="Logotipo"/>
+    </div>
+    
+    <!-- Botão de Voltar -->
+   
+
+    <!-- Container Principal -->
+    <div class="container">
+     <button onclick="window.location='Principal.html';" class="back-button">
+        <img src="VOLTAR.png" alt="Botão Voltar"/>
+    </button>
+        <div class="rooms-board">
+            <!-- Cartão de cada quarto -->
+            <div class="room-card1">
+                <a href="quarto101.html">
+                    <h3>Quarto 101</h3>
+                    <h3>BLOCO E</h3>
+                    <p>Pacientes: 2</p>
+                </a>
+            </div>
+            <div class="room-card1">
+                <h3>Quarto 102</h3>
+                <h3>BLOCO B</h3>
+                <p>Pacientes: 3</p>
+            </div>
+            <div class="room-card1">
+                <h3>Quarto 103</h3>
+                <h3>BLOCO A</h3>
+                <p>Pacientes: 1</p>
+            </div>
+            <div class="room-card1">
+                <h3>Quarto 104</h3>
+                <h3>BLOCO A</h3>
+                <p>Pacientes: 4</p>
+            </div>
+            <div class="room-card1">
+                <h3>Quarto 105</h3>
+                <h3>BLOCO B</h3>
+                <p>Pacientes: 8</p>
+            </div>
+            <div class="room-card1">
+                <h3>Quarto 106</h3>
+                <h3>BLOCO C</h3>
+                <p>Pacientes: 5</p>
+            </div>
+            <div class="room-card1">
+                <h3>Quarto 107</h3>
+                <h3>BLOCO D</h3>
+                <p>Pacientes: 6</p>
+            </div>
+            <div class="room-card">
+                <h3>Quarto 108</h3>
+                <h3>BLOCO E</h3>
+                <p>Pacientes: 7</p>
+            </div>
+            <div class="room-card">
+                <h3>Quarto 109</h3>
+                <h3>BLOCO B</h3>
+                <p>Pacientes: 3</p>
+            </div>
+            <div class="room-card">
+                <h3>Quarto 110</h3>
+                <h3>BLOCO E</h3>
+                <p>Pacientes: 1</p>
+            </div>
+            <div class="room-card">
+                <h3>Quarto 111</h3>
+                <h3>BLOCO A</h3>
+                <p>Pacientes: 4</p>
+            </div>
+            <div class="room-card">
+                <h3>Quarto 112</h3>
+                <h3>BLOCO B</h3>
+                <p>Pacientes: 8</p>
+            </div>
+            <div class="room-card">
+                <h3>Quarto 113</h3>
+                <h3>BLOCO C</h3>
+                <p>Pacientes: 5</p>
+            </div>
+            <div class="room-card">
+                <h3>Quarto 114</h3>
+                <h3>BLOCO D</h3>
+                <p>Pacientes: 6</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

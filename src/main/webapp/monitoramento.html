@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Define o viewport para tornar o layout responsivo -->
+    <title>Quadro de Monitoramento</title> <!-- Título da página -->
+    <style>
+        /* Estilo do corpo da página */
+        body {
+            font-family: Arial, sans-serif; /* Define a fonte como Arial */
+            background-color: #3cacb7 ; /* Cor de fundo da página */
+            display: flex; /* Usa flexbox para posicionamento */
+            justify-content: center; /* Centraliza o conteúdo horizontalmente */
+            align-items: center; /* Centraliza o conteúdo verticalmente */
+            height: 100vh; /* Define altura total da janela de visualização */
+            margin: 0; /* Remove margens da página */
+            flex-direction: column; /* Organiza o conteúdo em uma coluna */
+        }
+
+
+        .header-center-top {
+        width: 100%;
+        max-width: 1200px;
+        background-color: #032023;
+        padding: 10px 20px;
+        color:#3cacb7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .header-center-top h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #d0f0ff;
+    }
+    
+.header-center-top img {
+    width: 80px; /* Ajuste o tamanho para algo pequeno e proporcional */
+    height: auto; /* Mantém a proporção */
+    max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+    border-radius: 50%;
+    background-color: #032023;
+    object-fit: contain; /* Garante que a imagem se ajuste ao contêiner */
+}
+
+        /* Estilo do container principal */
+        .container {
+            width: 90%; /* Largura de 90% */
+            max-width: 1200px; /* Largura máxima de 1200px */
+            background-color: #7ec7c9; /* Cor de fundo */
+            border-radius: 1px 1px 15px 15px;; /* Bordas arredondadas */
+            padding: 20px; /* Espaçamento interno */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ao redor */
+            position: relative; /* Define o posicionamento relativo */
+        }
+
+        /* Estilo do cabeçalho no container */
+        .header {
+            display: flex; /* Usa flexbox para posicionamento */
+            align-items: center; /* Alinha os itens ao centro */
+            justify-content: space-between; /* Espaça os itens ao longo do eixo principal */
+            margin-bottom: 20px; /* Margem inferior */
+        }
+
+        /* Estilo das informações no cabeçalho */
+        .header .info {
+            display: flex; /* Usa flexbox */
+            align-items: top; /* Alinha os itens no topo */
+        }
+
+        /* Estilo da imagem no cabeçalho */
+        .header .info img {
+            width: 60px; /* Largura da imagem */
+            height: 60px; /* Altura da imagem */
+            border-radius: 60%; /* Torna a imagem circular */
+            margin-right: 20px; /* Espaçamento à direita da imagem */
+        }
+
+        /* Estilo do texto de informações */
+        .header .info .text-info {
+            font-size: 14px; /* Tamanho da fonte */
+        }
+
+        /* Estilo dos ícones no cabeçalho */
+        .header .icons {
+            display: flex; /* Usa flexbox para posicionar os ícones */
+            align-items: center; /* Alinha os ícones ao centro */
+        }
+
+        /* Estilo do botão com imagem */
+        button {
+            background-color: transparent; /* Remover fundo do botão */
+            border: none; /* Remover borda */
+            cursor: pointer; /* Cursor de pointer (mãozinha) ao passar sobre o botão */
+        }
+
+        /* Estilo da imagem dentro do botão */
+        button img {
+            width: 40px; /* Largura da imagem */
+            height: 40px; /* Altura da imagem */
+        }
+
+        /* Estilo ao passar o mouse sobre o botão */
+        button:hover img {
+            opacity: 0.8; /* Efeito de hover (opacidade) */
+        }
+
+        /* Estilo do quadro de monitoramento */
+        .monitoring-board {
+            display: flex; /* Usa flexbox para organização */
+            flex-direction: column; /* Organiza o conteúdo em uma coluna */
+            align-items: center; /* Centraliza o conteúdo horizontalmente */
+            background-color: #e0f7ff; /* Cor de fundo */
+            padding: 10px; /* Espaçamento interno */
+            border-radius: 10px; /* Bordas arredondadas */
+            width: 1180px; /* Largura fixa */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ao redor */
+  
+        /* Estilo do título do quadro de monitoramento */
+        .monitoring-board h2 {
+            margin-bottom: 10px; /* Margem inferior */
+            font-size: 18px; /* Tamanho da fonte */
+        }
+
+     .monitoring-board .data-table {
+    width: 100%; /* Largura total */
+    border-collapse: collapse; /* Remove espaçamentos */
+}
+.monitoring-board .data-table tr td {
+    font-size: 24px;
+    padding: 15px;
+    color: black;
+    border-bottom: 1px solid #ccc; /* Linha de separação */
+}
+.monitoring-board .data-table tr td label {
+    font-size: 20px;
+    color: #666;
+}
+        /* Estilo das células da tabela */
+        .monitoring-board .data-table value. {
+            font-size: 30px; /* Tamanho da fonte */
+            color:red; 
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Topo com HEALPH + e imagem -->
+    <div class="header-center-top">
+        <h1>HEALTH +</h1> <!-- Título no topo -->
+        <img src="logo2.png" alt="Imagem do Logotipo"/> <!-- Imagem do logotipo -->
+    </div>
+
+    <!-- Quadro de monitoramento -->
+    <div class="container">
+        <div class="header">
+            <div class="info">
+                <img src="perfil.png" alt="Foto do Paciente"/> <!-- Foto do paciente -->
+                <div class="text-info">
+                    <!-- Informações do paciente -->
+                    <strong>NOME:</strong> Mércio da Silva Lemos<br>
+                    <strong>CPF:</strong> 000.000.000-00<br>
+                    <strong>DATA DE ENTRADA:</strong> 22/01/1956
+                </div>
+            </div>
+            <div class="icons">
+                <!-- Botão de relatório com imagem -->
+                <button onclick="window.location='relatorio.html';">
+                    <img src="RELATORIO.png" alt="Botão Relatório"/> <!-- Ícone do relatório como botão -->
+                </button>
+                                <button onclick="window.location='quarto101.html';">
+                    <img src="VOLTAR.png" alt="Botão Voltar"/>
+                </button>
+            </div>
+        </div>
+
+        <!-- Quadro de monitoramento com dados -->
+        <div class="monitoring-board">
+ 
+          
+         <div class="monitoring-board">
+
+    <h2>QUADRO DE MONITORAMENTO</h2>
+    <table class="data-table">
+        <tr>
+        <td><small>BPM:</small></td>
+           <td class="value" id="bpmValor" ></td>
+            </tr>
+             <tr>
+            <td><small>SpO2:</small></td>
+            <td class="value" >98%</td>
+             </tr>
+              <tr>
+            <td><small>RR:</small></td>
+            <td class="value" >18</td>
+             </tr>
+              <tr>
+            <td><small>ºC:</small></td>
+            <td class="value" >36.7</td>
+             </tr>
+              <tr>
+            <td><small>MG/DL:</small></td>
+            <td class="value" >0</td>
+    
+        </tr>
+    </table>
+</div>
+     <script>
+    function mostrarAlertaCritico() {
+        // Verifica se o alerta já existe
+        if (!document.getElementById('alertaCritico')) {
+            const alerta = document.createElement('div');
+            alerta.id = 'alertaCritico';
+            alerta.className = 'alerta-critico';
+            alerta.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                </svg>
+                <h1>ALERTA</h1>
+                <h3>(POSSÍVEL PARADA CARDÍACA)</h3>
+            `;
+            document.body.appendChild(alerta); // Adiciona o alerta ao corpo da página
+        }
+    }
+
+    function removerAlertaCritico() {
+        const alerta = document.getElementById('alertaCritico');
+        if (alerta) {
+            alerta.remove();
+        }
+    }
+
+    function atualizarBPM() {
+        fetch('batimento')
+            .then(response => response.text())
+            .then(data => {
+                if (data === "alerta") {
+                    mostrarAlertaCritico();
+                } else {
+                    document.getElementById('bpmValor').textContent = data;
+                    removerAlertaCritico(); // Remove o alerta se o BPM for normal
+                }
+            })
+            .catch(error => console.error('Erro ao obter o BPM:', error));
+    }
+
+    setInterval(atualizarBPM, 100); // Mantém o intervalo de 100 ms
+</script>
+
+<style>
+    .alerta-critico {
+        background-color: #ff3b3b;
+        color: black;
+        text-align: center;
+        padding: 40px;
+        border-radius: 20px;
+        font-family: 'Arial', sans-serif;
+        position: fixed;
+        top: 300px; /* Ajuste a posição conforme necessário */
+        left: 380px;
+        right:380px; /* Centraliza horizontalmente */
+        transform: translateX(-50%); /* Ajusta para centralização correta */
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        animation: pulsar 1.5s ease-in-out infinite;
+    }
+
+    .alerta-critico svg {
+        width: 80px;
+        height: auto;
+        fill: black;
+        margin-bottom: 10px;
+    }
+
+    .alerta-critico h1 {
+        font-size: 40px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+
+    .alerta-critico h3 {
+        font-size: 20px;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    @keyframes pulsar {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
+        50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); }
+    }
+</style>
+
+
+            
+</body>
+</html>
